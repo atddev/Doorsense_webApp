@@ -84,3 +84,38 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 STATIC_ROOT = 'var/www/doorsense/static'
 STATIC_URL = '/static/'
+
+
+TEMPLATE_DIRS = (
+#template directory for webapp
+'/var/www/doorsense/webapp/templates',
+)
+
+REST_FRAMEWORK = {
+
+'PAGINATE_BY': 10,
+    'PAGINATE_BY_PARAM': 'page_size',
+    'MAX_PAGINATE_BY': 100,
+    'DEFAULT_PAGINATION_SERIALIZER_CLASS':
+        'rest_framework_ember.pagination.EmberPaginationSerializer',
+    'DEFAULT_PARSER_CLASSES': (
+        'rest_framework_ember.parsers.EmberJSONParser',
+        'rest_framework.parsers.FormParser',
+        'rest_framework.parsers.MultiPartParser'
+    ),
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework_ember.renderers.JSONRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer',
+    ),
+    
+ 'DEFAULT_AUTHENTICATION_CLASSES': (
+ 'rest_framework.authentication.SessionAuthentication',
+ ),
+'DEFAULT_PERMISSION_CLASSES': (
+# 'rest_framework.permissions.DjangoModelPermissions',
+'webapp.api_settings.CustomDjangoModelPermissions',
+)
+
+
+}
+
