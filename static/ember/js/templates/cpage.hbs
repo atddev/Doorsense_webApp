@@ -1,6 +1,8 @@
-  <div id="page-wrapper">
+         {{render "auth"}}
+  
+  <div id="page-wrapper"  align="center">
 
-            <div class="container-fluid">
+            <div class="container-fluid" >
 
                 <!-- Page Heading -->
                 <div class="row">
@@ -15,18 +17,19 @@
                         </ol>
                     </div>
                 </div>
+				
+				
                 <!-- /.row -->
                 
-                    <div class="col-lg-8">
+                    <div class="col-lg-8" style="float:right;">
                         <h3>Last 10 logs</h3>
                         <div class="table-responsive">
-                            <table class="table table-bordered table-hover table-striped">
+                            <table class="table table-bordered table-hover table-striped" data-toggle="table" data-pagination="true" data-search="true">
                                 <thead>
                                     <tr>
-                                        <th data-align="center" > Event <span class="glyphicon glyphicon-user"> </span>  </th>
-                                        <th data-align="center" > Time  <span class="glyphicon glyphicon-eye-open"> </span> </th>
+                                        <th data-align="center" > Event <span class="glyphicon glyphicon-eye-open"> </span>  </th>
+                                        <th data-align="center" > Time  <span class="glyphicon glyphicon-time"> </span> </th>
                                         <th data-align="center"> Date <span class="glyphicon glyphicon-calendar"> </span> </th>
-                                        <th> Server Time <span class="glyphicon glyphicon-time"></span> </th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -34,8 +37,7 @@
                                      {{#link-to "logg" id tagName='tr'}}                     
                                         <td><span class="badge">{{event}}</span></td> 
                                         <td>{{stime}}</td>  
-                                        <td>{{vis_date}}</td>
-                                        <td>{{vis_time}}</td>
+                                        <td>{{sdate}}</td>
                                         {{/link-to}}
                                      {{/each}}
                                 </tbody>
@@ -47,6 +49,26 @@
                 
                 <!-- /.row -->
 
+				  
+				  
+				  
+				  
+				  
+				  
+				  
+				  
+				  
+				  
+				  
+				  
+				  
+				  
+				  
+				  
+				  
+				  
+				  
+	
 
             </div>
             <!-- /.container-fluid -->

@@ -117,7 +117,7 @@ var AuthController = Ember.Controller.extend({
 				App.setSession('isLoggedIn',false);
 				controllerObj.set('errorMsg', '')
 					// wait .5 seconds and go to add submition page
-							Bootstrap.GNM.push('تم تسجيل الخروج بنجاح', '');
+							Bootstrap.GNM.push('You are successfully logged out', '');
 
 						setTimeout(
  						 function() 
@@ -155,8 +155,9 @@ var CpageController = Ember.ArrayController.extend({
 
   sortAscending: false,
   sortProperties: ['id'],
-
+  
 });
+
 
 module.exports = CpageController;
 
@@ -268,6 +269,7 @@ module.exports = App;
 var Logg = DS.Model.extend({
     event: DS.attr('string'),
     stime: DS.attr('string'),
+	sdate:DS.attr('string'),
     vis_date: DS.attr('string'),
     vis_time: DS.attr('string'),
 });
@@ -296,10 +298,33 @@ helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
   
 });
 
+Ember.TEMPLATES['auth'] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
+this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
+  var buffer = '', hashTypes, hashContexts, escapeExpression=this.escapeExpression;
+
+
+  data.buffer.push("<!DOCTYPE html>\n<html lang=\"en\">\n\n<head>\n\n    <meta charset=\"utf-8\">\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n    <meta name=\"description\" content=\"\">\n    <meta name=\"author\" content=\"\">\n\n    <title>Control Panel</title>\n\n\n  ");
+  hashTypes = {};
+  hashContexts = {};
+  data.buffer.push(escapeExpression(helpers.view.call(depth0, "vislist", {hash:{},contexts:[depth0],types:["STRING"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
+  data.buffer.push("\n    <!-- Bootstrap Core CSS -->\n    <link href=\"../static/css/bootstrap.min.css\" rel=\"stylesheet\">\n\n    <!-- Custom CSS -->\n    <link href=\"../static/css/sb-admin.css\" rel=\"stylesheet\">\n\n    <!-- Custom Fonts -->\n    <link href=\"../static/bootstrap-3.3.5/font-awesome/css/font-awesome.min.css\" rel=\"stylesheet\" type=\"text/css\">\n\n    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->\n    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->\n    <!--[if lt IE 9]>\n        <script src=\"https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js\"></script>\n        <script src=\"https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js\"></script>\n    <![endif]-->\n\n</head>\n\n<body>\n\n    <div id=\"wrapper\">\n\n         <!-- Navigation -->\n        <nav class=\"navbar navbar-inverse navbar-fixed-top\" role=\"navigation\">\n            <!-- Brand and toggle get grouped for better mobile display -->\n\n            <div class=\"navbar-header\">\n                <button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" data-target=\".navbar-ex1-collapse\">\n                    <span class=\"sr-only\">Toggle navigation</span>\n                    <span class=\"icon-bar\"></span>\n                    <span class=\"icon-bar\"></span>\n                    <span class=\"icon-bar\"></span>\n                </button>\n                <a class=\"navbar-brand\" href=\"#/cpage\">Control Panel</a>\n            </div>\n            <!-- Top Menu Items -->\n            <ul class=\"nav navbar-right top-nav\">\n                <li class=\"dropdown\">\n                    <a href=\"#/cpage\" class=\"dropdown-toggle\" data-toggle=\"dropdown\"><i class=\"fa fa-user\"></i> ");
+  hashTypes = {};
+  hashContexts = {};
+  data.buffer.push(escapeExpression(helpers._triageMustache.call(depth0, "username", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
+  data.buffer.push(" <b class=\"caret\"></b></a>\n                    <ul class=\"dropdown-menu\">\n                        <li>\n                            <a href=\"#\"><i class=\"fa fa-fw fa-user\"></i> User</a>\n                        </li>\n                        <li class=\"divider\"></li>\n                        <li>\n                            <a ");
+  hashTypes = {};
+  hashContexts = {};
+  data.buffer.push(escapeExpression(helpers.action.call(depth0, "logout", {hash:{},contexts:[depth0],types:["STRING"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
+  data.buffer.push("><i class=\"fa fa-fw fa-power-off\"  ></i> Logout </a>\n                        </li>\n                    </ul>\n                </li>\n            </ul>\n            <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->\n            <div class=\"collapse navbar-collapse navbar-ex1-collapse\">\n                <ul class=\"nav navbar-nav side-nav\">\n                    <li class=\"active\">\n                        <a href=\"#/cpage\"><i class=\"fa fa-fw fa-desktop\"></i> Control Panel </a>\n                    </li>\n                    <li>\n                        <a href=\"#/logglist\"><i class=\"fa fa-fw fa-table\"></i> Door Logs </a>\n                    </li>\n                    <li>\n                        <a href=\"#/addvis\"><i class=\"fa fa-fw fa-edit\"></i> Temp Logs </a>\n                    </li>\n              \n                </ul>\n            </div>\n            <!-- /.navbar-collapse -->\n        </nav>\n\n    </div>\n\n    ");
+  return buffer;
+  
+});
+
 Ember.TEMPLATES['cpage'] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
 this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
-  var buffer = '', stack1, hashTypes, hashContexts, escapeExpression=this.escapeExpression, self=this, helperMissing=helpers.helperMissing;
+  var buffer = '', stack1, stack2, hashTypes, hashContexts, options, escapeExpression=this.escapeExpression, self=this, helperMissing=helpers.helperMissing;
 
 function program1(depth0,data) {
   
@@ -329,21 +354,22 @@ function program2(depth0,data) {
   data.buffer.push("</td>  \n                                        <td>");
   hashTypes = {};
   hashContexts = {};
-  data.buffer.push(escapeExpression(helpers._triageMustache.call(depth0, "vis_date", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push("</td>\n                                        <td>");
-  hashTypes = {};
-  hashContexts = {};
-  data.buffer.push(escapeExpression(helpers._triageMustache.call(depth0, "vis_time", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
+  data.buffer.push(escapeExpression(helpers._triageMustache.call(depth0, "sdate", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
   data.buffer.push("</td>\n                                        ");
   return buffer;
   }
 
-  data.buffer.push("  <div id=\"page-wrapper\">\n\n            <div class=\"container-fluid\">\n\n                <!-- Page Heading -->\n                <div class=\"row\">\n                    <div class=\"col-lg-12\">\n                        <h1 class=\"page-header\">\n                            Metawear Logs\n                        </h1>\n                        <ol class=\"breadcrumb\">\n                            <li class=\"active\">\n                                <i class=\"fa fa-fw fa-desktop\"></i>  <a href=\"/#/cpage\">Door Logs</a>\n                            </li>\n                        </ol>\n                    </div>\n                </div>\n                <!-- /.row -->\n                \n                    <div class=\"col-lg-8\">\n                        <h3>Last 10 logs</h3>\n                        <div class=\"table-responsive\">\n                            <table class=\"table table-bordered table-hover table-striped\">\n                                <thead>\n                                    <tr>\n                                        <th data-align=\"center\" > Event <span class=\"glyphicon glyphicon-user\"> </span>  </th>\n                                        <th data-align=\"center\" > Time  <span class=\"glyphicon glyphicon-eye-open\"> </span> </th>\n                                        <th data-align=\"center\"> Date <span class=\"glyphicon glyphicon-calendar\"> </span> </th>\n                                        <th> Server Time <span class=\"glyphicon glyphicon-time\"></span> </th>\n                                    </tr>\n                                </thead>\n                                <tbody>\n                                     ");
+  data.buffer.push("         ");
   hashTypes = {};
   hashContexts = {};
-  stack1 = helpers.each.call(depth0, "controller", {hash:{},inverse:self.noop,fn:self.program(1, program1, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n                                </tbody>\n                            </table>\n                        </div>\n\n                         <br><br>\n                    </div>\n                \n                <!-- /.row -->\n\n\n            </div>\n            <!-- /.container-fluid -->\n\n        </div>\n        <!-- /#page-wrapper -->\n\n   \n    <!-- /#wrapper -->\n\n    <!-- jQuery -->\n    <script src=\"../static/js/jquery.js\"></script>\n\n    <!-- Bootstrap Core JavaScript -->\n    <script src=\"static/js/bootstrap.min.js\"></script>\n\n\n    <!-- Latest compiled and minified CSS -->\n<link rel=\"stylesheet\" href=\"//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.8.1/bootstrap-table.min.css\">\n\n<!-- Latest compiled and minified JavaScript -->\n<script src=\"//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.8.1/bootstrap-table.min.js\"></script>\n\n");
+  options = {hash:{},contexts:[depth0],types:["STRING"],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
+  data.buffer.push(escapeExpression(((stack1 = helpers.render || depth0.render),stack1 ? stack1.call(depth0, "auth", options) : helperMissing.call(depth0, "render", "auth", options))));
+  data.buffer.push("\n  \n  <div id=\"page-wrapper\"  align=\"center\">\n\n            <div class=\"container-fluid\" >\n\n                <!-- Page Heading -->\n                <div class=\"row\">\n                    <div class=\"col-lg-12\">\n                        <h1 class=\"page-header\">\n                            Metawear Logs\n                        </h1>\n                        <ol class=\"breadcrumb\">\n                            <li class=\"active\">\n                                <i class=\"fa fa-fw fa-desktop\"></i>  <a href=\"/#/cpage\">Door Logs</a>\n                            </li>\n                        </ol>\n                    </div>\n                </div>\n				\n				\n                <!-- /.row -->\n                \n                    <div class=\"col-lg-8\" style=\"float:right;\">\n                        <h3>Last 10 logs</h3>\n                        <div class=\"table-responsive\">\n                            <table class=\"table table-bordered table-hover table-striped\" data-toggle=\"table\" data-pagination=\"true\" data-search=\"true\">\n                                <thead>\n                                    <tr>\n                                        <th data-align=\"center\" > Event <span class=\"glyphicon glyphicon-eye-open\"> </span>  </th>\n                                        <th data-align=\"center\" > Time  <span class=\"glyphicon glyphicon-time\"> </span> </th>\n                                        <th data-align=\"center\"> Date <span class=\"glyphicon glyphicon-calendar\"> </span> </th>\n                                    </tr>\n                                </thead>\n                                <tbody>\n                                     ");
+  hashTypes = {};
+  hashContexts = {};
+  stack2 = helpers.each.call(depth0, "controller", {hash:{},inverse:self.noop,fn:self.program(1, program1, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
+  if(stack2 || stack2 === 0) { data.buffer.push(stack2); }
+  data.buffer.push("\n                                </tbody>\n                            </table>\n                        </div>\n\n                         <br><br>\n                    </div>\n                \n                <!-- /.row -->\n\n				  \n				  \n				  \n				  \n				  \n				  \n				  \n				  \n				  \n				  \n				  \n				  \n				  \n				  \n				  \n				  \n				  \n				  \n				  \n	\n\n            </div>\n            <!-- /.container-fluid -->\n\n        </div>\n        <!-- /#page-wrapper -->\n\n   \n    <!-- /#wrapper -->\n\n    <!-- jQuery -->\n    <script src=\"../static/js/jquery.js\"></script>\n\n    <!-- Bootstrap Core JavaScript -->\n    <script src=\"static/js/bootstrap.min.js\"></script>\n\n\n    <!-- Latest compiled and minified CSS -->\n<link rel=\"stylesheet\" href=\"//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.8.1/bootstrap-table.min.css\">\n\n<!-- Latest compiled and minified JavaScript -->\n<script src=\"//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.8.1/bootstrap-table.min.js\"></script>\n\n");
   return buffer;
   
 });
@@ -434,38 +460,26 @@ function program3(depth0,data) {
 Ember.TEMPLATES['logg'] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
 this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
-  var buffer = '', stack1, stack2, hashTypes, hashContexts, options, escapeExpression=this.escapeExpression, self=this, helperMissing=helpers.helperMissing;
+  var buffer = '', hashTypes, hashContexts, escapeExpression=this.escapeExpression;
 
-function program1(depth0,data) {
-  
-  var buffer = '', hashTypes, hashContexts;
-  data.buffer.push("    \n						<li class=\"list-group-item\"><strong>thing</strong><br> ");
-  hashTypes = {};
-  hashContexts = {};
-  data.buffer.push(escapeExpression(helpers._triageMustache.call(depth0, "visitor_id", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push("</li>\n                        ");
-  return buffer;
-  }
 
-  data.buffer.push("\n\n        <div id=\"page-wrapper\">\n\n            <div class=\"container-fluid\">\n\n                <!-- Page Heading -->\n                <div class=\"row\">\n                    <div class=\"col-lg-12\">\n                        <h1 class=\"page-header\">\n                            Log Details\n                        </h1>\n                        <ol class=\"breadcrumb\">\n                            <li>\n                                <i class=\"fa fa-fw fa-desktop\"></i>  <a href=\"/#/cpage\">Metawear Logs</a>\n                            </li>\n                            <li class=\"active\">\n                                <i class=\"fa fa-file\"></i> Log\n                            </li>\n                        </ol>\n                    </div>\n                </div>\n                <!-- /.row -->\n						<ul class=\"list-group\">\n					 \n                       ");
+  data.buffer.push("\n\n        <div id=\"page-wrapper\">\n\n            <div class=\"container-fluid\">\n\n                <!-- Page Heading -->\n                <div class=\"row\">\n                    <div class=\"col-lg-12\">\n                        <h1 class=\"page-header\">\n                            Log Details\n                        </h1>\n                        <ol class=\"breadcrumb\">\n                            <li>\n                                <i class=\"fa fa-fw fa-desktop\"></i>  <a href=\"/#/cpage\">Metawear Logs</a>\n                            </li>\n                            <li class=\"active\">\n                                <i class=\"fa fa-file\"></i> Log\n                            </li>\n                        </ol>\n                    </div>\n                </div>\n                <!-- /.row -->\n						<ul class=\"list-group\">\n					 \n                       \n						<li class=\"list-group-item\"><strong>Time: </strong><br> ");
   hashTypes = {};
   hashContexts = {};
-  options = {hash:{},inverse:self.noop,fn:self.program(1, program1, data),contexts:[depth0,depth0],types:["STRING","ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
-  stack2 = ((stack1 = helpers['link-to'] || depth0['link-to']),stack1 ? stack1.call(depth0, "visitor", "visitor_id", options) : helperMissing.call(depth0, "link-to", "visitor", "visitor_id", options));
-  if(stack2 || stack2 === 0) { data.buffer.push(stack2); }
-  data.buffer.push("\n						<li class=\"list-group-item\"><strong>thingTwo</strong><br> ");
+  data.buffer.push(escapeExpression(helpers._triageMustache.call(depth0, "stime", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
+  data.buffer.push("</li>\n						<li class=\"list-group-item\"><strong>Date: </strong><br> ");
   hashTypes = {};
   hashContexts = {};
-  data.buffer.push(escapeExpression(helpers._triageMustache.call(depth0, "inspec_id", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push("</li>\n						<li class=\"list-group-item\"><strong>Date</strong><br> ");
-  hashTypes = {};
-  hashContexts = {};
-  data.buffer.push(escapeExpression(helpers._triageMustache.call(depth0, "vis_date", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push("</li>\n						<li class=\"list-group-item\"><strong>Time</strong><br> ");
+  data.buffer.push(escapeExpression(helpers._triageMustache.call(depth0, "sdate", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
+  data.buffer.push("</li>\n						<li class=\"list-group-item\"><strong>Server Time:</strong><br> ");
   hashTypes = {};
   hashContexts = {};
   data.buffer.push(escapeExpression(helpers._triageMustache.call(depth0, "vis_time", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push("</li>\n                        </ul>\n\n               \n                <!-- /.row -->\n\n\n\n\n            </div>\n            <!-- /.container-fluid -->\n\n        </div>\n        <!-- /#page-wrapper -->\n\n    <!-- jQuery -->\n    <script src=\"../static/js/jquery.js\"></script>\n\n    <!-- Bootstrap Core JavaScript -->\n    <script src=\"static/js/bootstrap.min.js\"></script>\n\n");
+  data.buffer.push("</li>\n						<li class=\"list-group-item\"><strong>Server Date</strong><br> ");
+  hashTypes = {};
+  hashContexts = {};
+  data.buffer.push(escapeExpression(helpers._triageMustache.call(depth0, "vis_date", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
+  data.buffer.push("</li>\n                        </ul>\n\n               \n                <!-- /.row -->\n				\n				\n\n\n\n\n            </div>\n            <!-- /.container-fluid -->\n\n        </div>\n        <!-- /#page-wrapper -->\n\n    <!-- jQuery -->\n    <script src=\"../static/js/jquery.js\"></script>\n\n    <!-- Bootstrap Core JavaScript -->\n    <script src=\"static/js/bootstrap.min.js\"></script>\n\n");
   return buffer;
   
 });
@@ -495,11 +509,11 @@ function program2(depth0,data) {
   data.buffer.push("                     \n                                        <td><span class=\"badge\">");
   hashTypes = {};
   hashContexts = {};
-  data.buffer.push(escapeExpression(helpers._triageMustache.call(depth0, "visitor_id", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
+  data.buffer.push(escapeExpression(helpers._triageMustache.call(depth0, "event", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
   data.buffer.push("</span></td> \n                                        <td>");
   hashTypes = {};
   hashContexts = {};
-  data.buffer.push(escapeExpression(helpers._triageMustache.call(depth0, "inspec_id", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
+  data.buffer.push(escapeExpression(helpers._triageMustache.call(depth0, "stime", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
   data.buffer.push("</td>  \n                                        <td>");
   hashTypes = {};
   hashContexts = {};
@@ -512,17 +526,17 @@ function program2(depth0,data) {
   return buffer;
   }
 
-  data.buffer.push("       ");
+  data.buffer.push("      ");
   hashTypes = {};
   hashContexts = {};
   options = {hash:{},contexts:[depth0],types:["STRING"],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
   data.buffer.push(escapeExpression(((stack1 = helpers.render || depth0.render),stack1 ? stack1.call(depth0, "auth", options) : helperMissing.call(depth0, "render", "auth", options))));
-  data.buffer.push("\n\n\n        <div id=\"page-wrapper\">\n\n            <div class=\"container-fluid\">\n\n                <!-- Page Heading -->\n                <div class=\"row\">\n                    <div class=\"col-lg-12\">\n                        <h1 class=\"page-header\">\n                           Logs\n                        </h1>\n                        <ol class=\"breadcrumb\">\n                            <li>\n                                <i class=\"fa fa-fw fa-desktop\"></i>  <a href=\"/#/cpage\">Control Panel</a>\n                            </li>\n                            <li class=\"active\">\n                                <i class=\"fa fa-list\"></i> Logs\n                            </li>\n                        </ol>\n                    </div>\n                </div>\n\n                <!-- /.start TEST table -->\n\n<div class=\"col-sm-8\">\n<span class=\"counter pull-right\"></span>\n     <table class=\"table table-bordered table-hover table-striped\" data-toggle=\"table\" data-pagination=\"true\" data-search=\"true\">\n                                <thead>\n                                    <tr>\n                                        <th data-align=\"center\" > Event <span class=\"glyphicon glyphicon-user\"> </span>  </th>\n                                        <th data-align=\"center\" > Time  <span class=\"glyphicon glyphicon-eye-open\"> </span> </th>\n                                        <th data-align=\"center\"> Date <span class=\"glyphicon glyphicon-calendar\"> </span> </th>\n                                        <th> Server Time <span class=\"glyphicon glyphicon-time\"></span> </th>\n                                    </tr>\n                                </thead>\n                                <tbody>\n                                     ");
+  data.buffer.push("\n\n        <div id=\"page-wrapper\">\n\n            <div class=\"container-fluid\">\n\n                <!-- Page Heading -->\n                <div class=\"row\">\n                    <div class=\"col-lg-12\">\n                        <h1 class=\"page-header\">\n                           Logs\n                        </h1>\n                        <ol class=\"breadcrumb\">\n                            <li>\n                                <i class=\"fa fa-fw fa-desktop\"></i>  <a href=\"/#/cpage\">Control Panel</a>\n                            </li>\n                            <li class=\"active\">\n                                <i class=\"fa fa-list\"></i> Logs\n                            </li>\n                        </ol>\n                    </div>\n                </div>\n\n                <!-- /.start TEST table -->\n\n<div class=\"col-sm-8\">\n<span class=\"counter pull-right\"></span>\n     <table class=\"table table-bordered table-hover table-striped\" data-toggle=\"table\" data-pagination=\"true\" data-search=\"true\">\n                                <thead>\n                                    <tr>\n                                        <th data-align=\"center\" > Event <span class=\"glyphicon glyphicon-user\"> </span>  </th>\n                                        <th data-align=\"center\" > Time  <span class=\"glyphicon glyphicon-eye-open\"> </span> </th>\n                                        <th data-align=\"center\"> Date <span class=\"glyphicon glyphicon-calendar\"> </span> </th>\n                                        <th> Server Time <span class=\"glyphicon glyphicon-time\"></span> </th>\n                                    </tr>\n                                </thead>\n                                <tbody>\n                                     ");
   hashTypes = {};
   hashContexts = {};
   stack2 = helpers.each.call(depth0, "controller", {hash:{},inverse:self.noop,fn:self.program(1, program1, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
   if(stack2 || stack2 === 0) { data.buffer.push(stack2); }
-  data.buffer.push("\n                                </tbody>\n                            </table>\n                            <br><br>\n</div>\n\n\n            </div>\n            <!-- /.container-fluid -->\n\n        </div>\n        <!-- /#page-wrapper -->\n\n\n    <!-- jQuery -->\n    <script src=\"../static/js/jquery.js\"></script>\n\n    <!-- Bootstrap Core JavaScript -->\n    <script src=\"static/js/bootstrap.min.js\"></script>\n\n\n");
+  data.buffer.push("\n                                </tbody>\n                            </table>\n                            <br><br>\n</div>\n\n\n            </div>\n            <!-- /.container-fluid -->\n\n        </div>\n        <!-- /#page-wrapper -->\n\n		\n		\n\n    <!-- jQuery -->\n    <script src=\"../static/js/jquery.js\"></script>\n\n    <!-- Bootstrap Core JavaScript -->\n    <script src=\"static/js/bootstrap.min.js\"></script>\n\n\n");
   return buffer;
   
 });

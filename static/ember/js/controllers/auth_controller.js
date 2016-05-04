@@ -21,7 +21,7 @@ var AuthController = Ember.Controller.extend({
 				App.setSession('isLoggedIn',false);
 				controllerObj.set('errorMsg', '')
 					// wait .5 seconds and go to add submition page
-							Bootstrap.GNM.push('تم تسجيل الخروج بنجاح', '');
+							Bootstrap.GNM.push('You are successfully logged out', '');
 
 						setTimeout(
  						 function() 

@@ -9,6 +9,8 @@ class Logg(models.Model):
 	event = models.CharField(max_length=30)
 	# Sender time
 	stime = models.CharField(max_length=60)
+	# Sender date
+	sdate = models.CharField(max_length=60)
 	# Server date and time
 	vis_date = models.DateField(auto_now_add=True, blank=True)
 	vis_time = models.TimeField(auto_now_add=True, blank=True)
@@ -19,7 +21,7 @@ class Logg(models.Model):
 
 
 	class Admin:
-		list_display = ('event', 'stime', 'vis_date', 'vis_time')
+		list_display = ('event', 'stime', 'sdate', 'vis_date', 'vis_time')
 
 	def toDict(self):
 
@@ -27,6 +29,7 @@ class Logg(models.Model):
 		'id': self.id,
 		'event': self.event,
 		'stime':self.stime,
+		'sdate':self.sdate,
 		'vis_date': self.vis_date,
 		'vis_time':self.vis_time,    
 		}

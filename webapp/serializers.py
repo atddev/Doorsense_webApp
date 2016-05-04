@@ -37,6 +37,6 @@ class LoggSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Logg
-        fields = ('id', 'event', 'stime', 'vis_date', 'vis_time')
+        fields = ('id', 'event', 'stime', 'sdate', 'vis_date', 'vis_time')
 
 

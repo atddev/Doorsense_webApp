@@ -93,9 +93,9 @@ TEMPLATE_DIRS = (
 
 REST_FRAMEWORK = {
 
-'PAGINATE_BY': 10,
+'PAGINATE_BY': 300,
     'PAGINATE_BY_PARAM': 'page_size',
-    'MAX_PAGINATE_BY': 100,
+    'MAX_PAGINATE_BY': 300,
     'DEFAULT_PAGINATION_SERIALIZER_CLASS':
         'rest_framework_ember.pagination.EmberPaginationSerializer',
     'DEFAULT_PARSER_CLASSES': (

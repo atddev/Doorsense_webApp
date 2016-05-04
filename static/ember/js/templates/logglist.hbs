@@ -1,5 +1,4 @@
-       {{render "auth"}}
-
+      {{render "auth"}}
 
         <div id="page-wrapper">
 
@@ -38,8 +37,8 @@
                                 <tbody>
                                      {{#each controller}}    
                                      {{#link-to "logg" id tagName='tr'}}                     
-                                        <td><span class="badge">{{visitor_id}}</span></td> 
-                                        <td>{{inspec_id}}</td>  
+                                        <td><span class="badge">{{event}}</span></td> 
+                                        <td>{{stime}}</td>  
                                         <td>{{vis_date}}</td>
                                         <td>{{vis_time}}</td>
                                         {{/link-to}}
@@ -56,6 +55,8 @@
         </div>
         <!-- /#page-wrapper -->
 
+		
+		
 
     <!-- jQuery -->
     <script src="../static/js/jquery.js"></script>
