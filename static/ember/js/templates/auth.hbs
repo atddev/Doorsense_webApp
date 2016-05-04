@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Control Panel</title>
+    <title>Door Sense Logs</title>
 
 
   {{view "vislist"}}
@@ -54,10 +54,6 @@
                     <a href="#/cpage" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> {{username}} <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="#"><i class="fa fa-fw fa-user"></i> User</a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
                             <a {{action 'logout'}}><i class="fa fa-fw fa-power-off"  ></i> Logout </a>
                         </li>
                     </ul>
@@ -67,13 +63,10 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li class="active">
-                        <a href="#/cpage"><i class="fa fa-fw fa-desktop"></i> Control Panel </a>
+                        <a href="#/cpage"><i class="fa fa-fw fa-table"></i> Door Logs </a>
                     </li>
                     <li>
-                        <a href="#/logglist"><i class="fa fa-fw fa-table"></i> Door Logs </a>
-                    </li>
-                    <li>
-                        <a href="#/addvis"><i class="fa fa-fw fa-edit"></i> Temp Logs </a>
+                        <a href="#/logglist"><i class="fa fa-sun-o"></i> Temperature Logs </a>
                     </li>
               
                 </ul>

@@ -1,6 +1,6 @@
       {{render "auth"}}
 
-        <div id="page-wrapper">
+        <div id="page-wrapper" align="center">
 
             <div class="container-fluid">
 
@@ -8,46 +8,20 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                           Logs
+                           Temperature Logs
                         </h1>
                         <ol class="breadcrumb">
                             <li>
                                 <i class="fa fa-fw fa-desktop"></i>  <a href="/#/cpage">Control Panel</a>
                             </li>
                             <li class="active">
-                                <i class="fa fa-list"></i> Logs
+                                <i class="fa fa-list"></i>  Temperature Logs
                             </li>
                         </ol>
                     </div>
                 </div>
 
-                <!-- /.start TEST table -->
-
-<div class="col-sm-8">
-<span class="counter pull-right"></span>
-     <table class="table table-bordered table-hover table-striped" data-toggle="table" data-pagination="true" data-search="true">
-                                <thead>
-                                    <tr>
-                                        <th data-align="center" > Event <span class="glyphicon glyphicon-user"> </span>  </th>
-                                        <th data-align="center" > Time  <span class="glyphicon glyphicon-eye-open"> </span> </th>
-                                        <th data-align="center"> Date <span class="glyphicon glyphicon-calendar"> </span> </th>
-                                        <th> Server Time <span class="glyphicon glyphicon-time"></span> </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                     {{#each controller}}    
-                                     {{#link-to "logg" id tagName='tr'}}                     
-                                        <td><span class="badge">{{event}}</span></td> 
-                                        <td>{{stime}}</td>  
-                                        <td>{{vis_date}}</td>
-                                        <td>{{vis_time}}</td>
-                                        {{/link-to}}
-                                     {{/each}}
-                                </tbody>
-                            </table>
-                            <br><br>
-</div>
-
+            
 
             </div>
             <!-- /.container-fluid -->

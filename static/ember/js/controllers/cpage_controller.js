@@ -1,7 +1,7 @@
 var CpageController = Ember.ArrayController.extend({
-
-  sortAscending: false,
-  sortProperties: ['id'],
+	//not sure if this doing anything!
+   sortProperties: ['id'],
+   sortAscending: false,
   
 });
 
